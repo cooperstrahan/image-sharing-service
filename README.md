@@ -1,3 +1,10 @@
+# Image sharing
+![alt text](https://github.com/cooperstrahan/image-sharing-service/image-sharing-service-image.png?raw=true)
+
+### System Requirements
+Go installation
+yarn/npm installation
+
 # Set up front end -- image-sharing
 
 ## Project setup
@@ -23,9 +30,6 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 
 # Set up back end -- api
 ```
@@ -40,3 +44,12 @@ go build
 ```
 ./main
 ```
+
+### TODO:
+1. Update User Interface
+2. Fix error checking
+3. Filter by tags
+4. Testing for the front end
+5. More testing for the back end
+6. Search
+7. Dockerize project
