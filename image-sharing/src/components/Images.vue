@@ -3,25 +3,35 @@
     <h1>All images</h1>
 
   <div>
+
+    
+
     <li 
     v-for='image in info' 
     :key='image.id'
     >
-    
-     <img class="small-image" v-bind:src="require('../../../api/cmd/main/images/' + image.filename)" /> 
-     <router-link
-        class="nav-link active"
+
+      <div class="card image-card">
+      <img class="card-img-top" v-bind:src="require('../../../api/cmd/main/images/' + image.filename)" />
+      <div class="card-body">
+        <h5 class="card-title">{{image.title}}</h5>
+        <p class="card-text">{{image.description}}</p>
+        <router-link
+        class="btn btn-primary"
         aria-current="page"
         v-bind:to="'/images/' + image.id"
-      >
-     <h3> {{image.title }} </h3>
-     </router-link
-                >
+      >View Image</router-link>
+        </div>
+      </div>
+    
+      
+     
     </li>
 
+
   
-    
-  </div>
+    </div>
+
   </div>
 </template>
 
@@ -80,7 +90,12 @@ a {
 .hello {
   margin: 15px;
 }
-.small-image {
-  max-width: 10rem;
+/* .small-image {
+  max-width: rem;
+} */
+.image-card {
+  /* height: 20rem; */
+  width: 18rem;
+  margin: 1rem;
 }
 </style>

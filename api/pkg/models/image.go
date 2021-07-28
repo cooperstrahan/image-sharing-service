@@ -83,7 +83,7 @@ func GetImageById(Id int64) (*Image, *sql.DB) {
 
 func DeleteImage(Id int64) {
 	// db.Where("idimages = ?", Id).Delete(image)
-	fmt.Println(Id)
+	// fmt.Println(Id)
 	queryString := fmt.Sprintf("DELETE from images where ID=?")
 
 	_, err := db.Query(queryString, Id)
@@ -91,4 +91,21 @@ func DeleteImage(Id int64) {
 		panic(err.Error())
 	}
 	// return image
+}
+
+func GetRecentId() (id int64) {
+	var image Image
+	results, err := db.Query("SELECT * FROM images ORDER BY ID DESC LIMIT 1;")
+	if err != nil {
+		panic(err.Error())
+	}
+
+	for results.Next() {
+		err = results.Scan(&image.ImageID, &image.FileName, &image.Title, &image.Tags, &image.Description, &image.CreatedAt, &image.UpdatedAt, &image.DeletedAt)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
+
+	return image.ImageID
 }
