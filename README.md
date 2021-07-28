@@ -1,5 +1,11 @@
+## Testing
+Tests are currently dependent on the entries in the database, Tests will pass as long as the current entries in the database are maintained but will fail after 
+images are deleted / changed -- suggestion to run tests before messing with the application.
+
+
+
 # Image sharing
-![alt text](https://github.com/cooperstrahan/image-sharing-service/image-sharing-service-image.png?raw=true)
+![alt text](https://github.com/cooperstrahan/image-sharing-service/blob/main/imagesharing.png)
 
 ### System Requirements
 Go installation
@@ -50,6 +56,6 @@ go build
 2. Fix error checking
 3. Filter by tags
 4. Testing for the front end
-5. More testing for the back end
+5. Update testing for the back end to work with Interfaces in order to work with mocked cases
 6. Search
 7. Dockerize project
