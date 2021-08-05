@@ -109,3 +109,67 @@ func GetRecentId() (id int64) {
 
 	return image.ImageID
 }
+
+func ResetDatabase() {
+	_, err := db.Query("DELETE FROM Images;")
+	if err != nil {
+		panic(err.Error())
+	}
+
+	images := []Image{
+		{
+			ImageID:     6,
+			FileName:    "dog1.jpg",
+			Title:       "Doggo",
+			Tags:        "dog",
+			Description: "The happiest dog I have ever seen",
+		},
+		{
+			ImageID:     7,
+			FileName:    "dog2.jpg",
+			Title:       "Stoked dog",
+			Tags:        "dogs",
+			Description: "The most stoked dog bouncing around!",
+		},
+		{
+			ImageID:     8,
+			FileName:    "dog4.jpg",
+			Title:       "Two dogs",
+			Tags:        "dogs",
+			Description: "A couple of buddies palling around",
+		},
+		{
+			ImageID:     9,
+			FileName:    "cat1.jpg",
+			Title:       "Cute Cat",
+			Tags:        "cats",
+			Description: "A very cute grey cat.",
+		},
+
+		{
+			ImageID:     10,
+			FileName:    "dog3.jpg",
+			Title:       "Sweet puppy",
+			Tags:        "dogs",
+			Description: "A very sweet pup!",
+		},
+		{
+			ImageID:     12,
+			FileName:    "prancer.jpg",
+			Title:       "Prancer",
+			Tags:        "dogs",
+			Description: "Prancer, Coco's dog",
+		},
+		{
+			ImageID:     13,
+			FileName:    "IMG_8645.jpeg",
+			Title:       "Mug",
+			Tags:        "this is a mug",
+			Description: "Description",
+		},
+	}
+
+	for _, image := range images {
+		image.UploadImage()
+	}
+}

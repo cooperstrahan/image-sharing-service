@@ -58,3 +58,4 @@ routes: routes})
 
 new Vue(Vue.util.extend({ router },
   App)).$mount('#app');
+

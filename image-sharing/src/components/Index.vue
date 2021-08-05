@@ -6,7 +6,7 @@
       <h2 v-if="image"> {{ image.title }} </h2>
     
 
-      <img class="middle-image" v-if="image" v-bind:src="require('../../../api/cmd/main/images/' + image.filename)" />
+      <img class="card-img-top" v-bind:src="getImage(image.filename)" v-bind:alt="image.filename" />
         <div class="image-info">
         <p v-if="image">Tags: {{ image.tags }} </p> 
         <p v-if="image">Description: {{ image.description }}</p> 
@@ -69,7 +69,16 @@ export default {
       .catch(error => {
         console.log(error);
       });
-    } 
+    } ,
+
+    getImage(image) {
+      try {
+        return require('../../../api/cmd/main/images/' + image)
+      } catch (e) {
+        console.log(e);
+        return  
+      }
+    }
   }
 }
 </script>

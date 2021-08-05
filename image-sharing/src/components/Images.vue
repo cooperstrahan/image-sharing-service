@@ -12,7 +12,8 @@
     >
 
       <div class="card image-card">
-      <img class="card-img-top" v-bind:src="require('../../../api/cmd/main/images/' + image.filename)" />
+
+      <img class="card-img-top" v-bind:src="getImage(image.filename)" v-bind:alt="image.filename" />
       <div class="card-body">
         <h5 class="card-title">{{image.title}}</h5>
         <p class="card-text">{{image.description}}</p>
@@ -38,6 +39,7 @@
 <script>
 import axios from 'axios';
 
+
 export default {
   name: 'Images',
   title: 'View Images',
@@ -47,6 +49,7 @@ export default {
   data () {
     return {
       info: null,
+      defaultImg: require('@/assets/images/cat1.jpg'),
     }
   },
 
@@ -56,16 +59,17 @@ export default {
       .then(response => (this.info = response.data))    
   },
 
-  computed: {
-      // generateImageStrings: function () {
-      //   console.log("generate Image strings called")
-      //   return this.info.map(function (imageObject) {
-      //     imageObject.filename = "../../../api/cmd/main/images/" + imageObject.filename   
-      //     return imageObject
-      //   }) 
-          
-    // }
+  methods: {
+    getImage(image) {
+      try {
+        return require('../../../api/cmd/main/images/' + image)
+      } catch (e) {
+        console.log(e);
+        return  
+      }
+    }
   }
+
 }
 
 
